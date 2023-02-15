@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="722dd529-94f8-4398-aeed-0a5d34be8836" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="myfirst-repoFlow" doc:id="f0605770-03e4-43a7-8a08-7f1048e3ae68" >
+		<http:listener doc:name="Listener" doc:id="0a6c9a4f-4efd-4b87-be88-9655aef4ee2a" config-ref="HTTP_Listener_config" path="/repo"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5f698bc1-0040-4f45-8092-36e5bce9bf88" message="flow started"/>
+		<set-payload value="my first mule-repo project" doc:name="Set Payload" doc:id="bad9ba54-f8cb-44f4-a4f4-cd24e2ca75c6" />
+		<logger level="INFO" doc:name="Logger" doc:id="63252269-ca92-47cd-b8a8-4bb94a57a46c" message="#[payload]"/>
+	</flow>
+</mule>
